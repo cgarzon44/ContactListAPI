@@ -10,25 +10,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(`https://assets.breatheco.de/apis/fake/todos/user/cgarzon`, requestOptions)
+				fetch(` https://assets.breatheco.de/apis/fake/contact/agenda/CarlosAgenda`, requestOptions)
 					.then(response => response.json())
 					.then(res => getStore(setStore({ list: res })))
 					.catch(error => console.log("error", error));
 			},
-			newListItem: (newItem, fullName, email, agenda, address, phone) => {
+			newListItem: (fullName, email, address, phone) => {
 				const myHeaders = { "Content-Type": "application/json" };
 				let newList = getStore().list;
-				newList = [...newList, { label: newItem, done: false }];
+				newList = [
+					...newList,
+					{
+						full_name: fullName,
+						email: email,
+						agenda_slug: CarlosAgenda,
+						address: address,
+						phone: phone
+					}
+				];
 				const raw = JSON.stringify(newList);
 
 				const requestOptions = {
-					method: "PUT",
+					method: "POST",
 					headers: myHeaders,
 					body: raw,
 					redirect: "follow"
 				};
 
-				fetch("https://assets.breatheco.de/apis/fake/todos/user/cgarzon", requestOptions)
+				fetch(" https://assets.breatheco.de/apis/fake/contact/", requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
 					.then(() => getActions().listGet())

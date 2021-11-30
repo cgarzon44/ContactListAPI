@@ -14,18 +14,18 @@ const ImportContact = () => {
 
 	const handleOnClickButton = e => {
 		e.preventDefault();
+		setNewItem("");
+		setFullName("");
+		setEmail("");
+		setAgenda("");
+		setAdress("");
+		setPhone("");
 	};
 
 	return (
 		<>
 			<form>
 				<div className="text-center mt-5">
-					<input
-						type="text"
-						placeholder="New Task"
-						value={newItem}
-						onChange={e => setNewItem(e.target.value)}
-					/>
 					<label>Full Name: </label>
 					<input
 						name="full_name"
@@ -41,14 +41,6 @@ const ImportContact = () => {
 						placeholder="dave@gmail.com"
 						value={email}
 						onChange={e => setEmail(e.target.value)}
-					/>
-					<label>Agenda: </label>
-					<input
-						name="agenda_slug"
-						type="text"
-						placeholder="What's on the agenda?"
-						value={agenda}
-						onChange={e => setAgenda(e.target.value)}
 					/>
 					<label>Address: </label>
 					<input
@@ -72,13 +64,6 @@ const ImportContact = () => {
 					type="button"
 					onClick={() => {
 						actions.newListItem(newItem, fullName, email, agenda, address, phone);
-						setNewItem("");
-						setFullName("");
-						setEmail("");
-						setAgenda("");
-						setAdress("");
-						setPhone("");
-
 						handleOnClickButton;
 					}}>
 					Add New Contact
