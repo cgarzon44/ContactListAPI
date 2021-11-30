@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
+import { EditText } from "react-edit-text";
 
 const ContactList = () => {
 	const { store, actions } = useContext(Context);
@@ -14,19 +15,40 @@ const ContactList = () => {
 							const index = item.id;
 
 							return (
-								<li key={index}>
-									{item.full_name}
-									{item.email}
-									{item.address}
-									{item.phone}
-									<button
-										type="button"
-										onClick={() => {
-											actions.deleteItem(index);
-										}}>
-										<i className="far fa-trash-alt" />
-									</button>
-								</li>
+								<form key={index}>
+									<li key={index}>
+										<div>
+											<div>
+												<label>Full Name: </label>
+
+												{item.full_name}
+											</div>
+
+											<div>
+												<label>Email: </label>
+												{item.email}
+											</div>
+
+											<div>
+												<label>Address: </label>
+												{item.address}
+											</div>
+
+											<div>
+												<label>Phone: </label>
+												{item.phone}
+											</div>
+										</div>
+
+										<button
+											type="button"
+											onClick={() => {
+												actions.deleteItem(index);
+											}}>
+											<i className="far fa-trash-alt" />
+										</button>
+									</li>
+								</form>
 							);
 						})}
 				</ul>
