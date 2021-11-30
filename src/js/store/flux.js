@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			list: []
 		},
 		actions: {
+			// Get Conatct List
 			listGet: () => {
 				let requestOptions = {
 					method: "GET",
@@ -15,19 +16,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => getStore(setStore({ list: res })))
 					.catch(error => console.log("error", error));
 			},
+
+			// add new contact
 			newListItem: (fullName, email, address, phone) => {
 				const myHeaders = { "Content-Type": "application/json" };
 				let newList = getStore().list;
-				newList = [
-					...newList,
-					{
-						full_name: fullName,
-						email: email,
-						agenda_slug: CarlosAgenda,
-						address: address,
-						phone: phone
-					}
-				];
+
+				newList = {
+					full_name: fullName,
+					email: email,
+					agenda_slug: "CarlosAgenda",
+					address: address,
+					phone: phone
+				};
 				const raw = JSON.stringify(newList);
 
 				const requestOptions = {
@@ -37,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(" https://assets.breatheco.de/apis/fake/contact/", requestOptions)
+				fetch(`https://assets.breatheco.de/apis/fake/contact/`, requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
 					.then(() => getActions().listGet())
@@ -55,18 +56,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const raw = JSON.stringify(newList);
 
 				const requestOptions = {
-					method: "PUT",
+					method: "DELETE",
 					headers: myHeaders,
 					body: raw,
 					redirect: "follow"
 				};
 
 				const newObject = { list: newList };
-				fetch("https://assets.breatheco.de/apis/fake/todos/user/cgarzon", requestOptions)
+				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
 
-					.then(response => setStore(newObject))
+					.then(res => setStore(newObject))
 
 					.catch(error => console.log("error", error));
 			}

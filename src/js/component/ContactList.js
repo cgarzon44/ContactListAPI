@@ -10,12 +10,13 @@ const ContactList = () => {
 			<div>
 				<ul>
 					{store.list &&
-						store.list.map((item, index) => {
+						store.list.map(item => {
+							const index = item.id;
+
 							return (
 								<li key={index}>
 									{item.full_name}
 									{item.email}
-									{item.agenda_slug}
 									{item.address}
 									{item.phone}
 									<button

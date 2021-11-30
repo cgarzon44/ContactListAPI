@@ -1,25 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, nextID } from "react";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
 
 const ImportContact = () => {
 	const { actions } = useContext(Context);
 
-	const [newItem, setNewItem] = useState("");
 	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
-	const [agenda, setAgenda] = useState("");
 	const [address, setAdress] = useState("");
 	const [phone, setPhone] = useState("");
 
 	const handleOnClickButton = e => {
 		e.preventDefault();
-		setNewItem("");
-		setFullName("");
-		setEmail("");
-		setAgenda("");
-		setAdress("");
-		setPhone("");
 	};
 
 	return (
@@ -63,8 +55,12 @@ const ImportContact = () => {
 					className="btn-primary "
 					type="button"
 					onClick={() => {
-						actions.newListItem(newItem, fullName, email, agenda, address, phone);
+						actions.newListItem(fullName, email, address, phone);
 						handleOnClickButton;
+						setFullName("");
+						setEmail("");
+						setAdress("");
+						setPhone("");
 					}}>
 					Add New Contact
 				</button>
