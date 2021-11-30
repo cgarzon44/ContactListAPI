@@ -1,10 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			firstName: "",
-			lastName: "",
-			Phone: "",
-
 			list: []
 		},
 		actions: {
@@ -19,7 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => getStore(setStore({ list: res })))
 					.catch(error => console.log("error", error));
 			},
-			newListItem: newItem => {
+			newListItem: (newItem, fullName, email, agenda, address, phone) => {
 				const myHeaders = { "Content-Type": "application/json" };
 				let newList = getStore().list;
 				newList = [...newList, { label: newItem, done: false }];

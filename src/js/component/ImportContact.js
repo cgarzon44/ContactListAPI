@@ -46,7 +46,7 @@ const ImportContact = () => {
 					<input
 						name="agenda_slug"
 						type="text"
-						placeholder="my_super_agenda"
+						placeholder="What's on the agenda?"
 						value={agenda}
 						onChange={e => setAgenda(e.target.value)}
 					/>
@@ -74,6 +74,10 @@ const ImportContact = () => {
 						actions.newListItem(newItem, fullName, email, agenda, address, phone);
 						setNewItem("");
 						setFullName("");
+						setEmail("");
+						setAgenda("");
+						setAdress("");
+						setPhone("");
 
 						handleOnClickButton;
 					}}>
