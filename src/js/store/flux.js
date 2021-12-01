@@ -85,10 +85,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 			// put updated data to sever
-			UpdateCurrentUser: (index, fullname, email, address, phone) => {
+			UpdateCurrentUser: (index, newFullName, email, address, phone) => {
 				const myHeaders = { "Content-Type": "application/json" };
 				const raw = JSON.stringify({
-					full_name: fullname,
+					full_name: newFullName,
 					email: email,
 					agenda_slug: "CarlosAgenda",
 					address: address,

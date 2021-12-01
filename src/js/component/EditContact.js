@@ -4,9 +4,12 @@ import { Context } from "../store/appContext";
 import { EditText } from "react-edit-text";
 import { Link } from "react-router-dom";
 
-const EditContact = () => {
+const EditContact = item => {
 	const { store, actions } = useContext(Context);
 	const [newFullName, setNewFullName] = useState();
+	const [newEmail, setNewEmail] = useState();
+	const [newAddress, setNewAddress] = useState();
+	const [newPhone, setNewPhone] = useState();
 
 	return (
 		<div className="text-center mt-5">
@@ -18,35 +21,60 @@ const EditContact = () => {
 
 							return (
 								<li key={index}>
-									<h1>HEllO</h1>
 									<div>
 										<div>
 											<label>Full Name: </label>
-											<EditText defaultValue={item.full_name} />
-											{item.full_name}
+											<input
+												placeholder={item.full_name}
+												value={newFullName}
+												onChange={e => setNewFullName(e.target.value)}
+											/>
 										</div>
 
 										<div>
 											<label>Email: </label>
-											{item.email}
+											<input
+												placeholder={item.email}
+												value={newEmail}
+												onChange={e => setNewEmail(e.target.value)}
+											/>
 										</div>
 
 										<div>
 											<label>Address: </label>
-											{item.address}
+											<input
+												placeholder={item.address}
+												value={newAddress}
+												onChange={e => setNewAddress(e.target.value)}
+											/>
 										</div>
 
 										<div>
 											<label>Phone: </label>
-											{item.phone}
+											<input
+												placeholder={item.phone}
+												value={newPhone}
+												onChange={e => setNewPhone(e.target.value)}
+											/>
 										</div>
 									</div>
+									<Link to="/demo">
+										<button name="leaveEdit" type="button">
+											<i className="fas fa-times-circle" />
+										</button>
+									</Link>
 
 									<button
 										name="saveButton"
 										type="button"
 										onClick={() => {
-											actions.UpdateCurrentUser(index, fullname, email, address, phone);
+											actions.UpdateCurrentUser(
+												index,
+												newFullName,
+												newEmail,
+												newAddress,
+												newPhone
+											);
 										}}>
 										<i className="fas fa-save" />
 									</button>
