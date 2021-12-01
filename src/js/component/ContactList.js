@@ -13,48 +13,62 @@ const ContactList = () => {
 					{store.list &&
 						store.list.map(item => {
 							const index = item.id;
+							let fullname = item.full_name;
+							let email = item.email;
+							let address = item.address;
+							let phone = item.phone;
 
 							return (
-								<form key={index}>
-									<li key={index}>
+								<li key={index}>
+									<div>
 										<div>
-											<div>
-												<label>Full Name: </label>
+											<label>Full Name: </label>
 
-												{item.full_name}
-											</div>
-
-											<div>
-												<label>Email: </label>
-												{item.email}
-											</div>
-
-											<div>
-												<label>Address: </label>
-												{item.address}
-											</div>
-
-											<div>
-												<label>Phone: </label>
-												{item.phone}
-											</div>
+											{fullname}
 										</div>
-										<button
-											type="button"
-											onClick={() => {
-												actions.getCurrentUser(index);
-											}}>
-											<i className="fas fa-user-edit" />
-										</button>
-										<button
-											type="button"
-											onClick={() => {
-												actions.deleteItem(index);
-											}}>
-											<i className="far fa-trash-alt" />
-										</button>
-									</li>
-								</form>
+
+										<div>
+											<label>Email: </label>
+											{email}
+										</div>
+
+										<div>
+											<label>Address: </label>
+											{address}
+										</div>
+
+										<div>
+											<label>Phone: </label>
+											{phone}
+										</div>
+									</div>
+									<button
+										name="editUser"
+										type="button"
+										onClick={() => {
+											actions.getCurrentUser(index, fullname, email, address, phone);
+										}}>
+										<i className="fas fa-user-edit" />
+									</button>
+
+									<button
+										name="saveButton"
+										type="button"
+										onClick={() => {
+											actions.UpdateCurrentUser(index, fullname);
+										}}>
+										<i className="fas fa-save" />
+									</button>
+
+									<button
+										name="deleteButton"
+										type="button"
+										onClick={() => {
+											actions.deleteItem(index);
+										}}>
+										<i className="far fa-trash-alt" />
+									</button>
+								</li>
 							);
 						})}
 				</ul>
