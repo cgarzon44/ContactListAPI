@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
-import { EditText } from "react-edit-text";
+import { EditContact, EditText } from "react-edit-text";
 import { Link } from "react-router-dom";
 
-const EditContact = item => {
+const EditContacts = item => {
 	const { store, actions } = useContext(Context);
 	const [newFullName, setNewFullName] = useState();
 	const [newEmail, setNewEmail] = useState();
@@ -60,7 +60,7 @@ const EditContact = item => {
 									</div>
 									<Link to="/demo">
 										<button name="leaveEdit" type="button">
-											<i className="fas fa-times-circle" />
+											<i className="fas fa-undo-alt" />
 										</button>
 									</Link>
 
@@ -87,4 +87,4 @@ const EditContact = item => {
 	);
 };
 
-export default EditContact;
+export default EditContacts;
