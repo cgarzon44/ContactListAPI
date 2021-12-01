@@ -105,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
-
+					.then(() => getActions().listGet())
 					.catch(error => console.log("error", error));
 			}
 		}
