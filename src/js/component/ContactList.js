@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import { EditText } from "react-edit-text";
 import { Link } from "react-router-dom";
 
-const ContactList = () => {
+const ContactList = index => {
 	const { store, actions } = useContext(Context);
 	const [newFullName, setNewFullName] = useState();
 
@@ -14,7 +14,7 @@ const ContactList = () => {
 				<ul>
 					{store.list &&
 						store.list.map((item, index) => {
-							// const index = item.id;
+							const id = item.id;
 
 							return (
 								<li key={index}>
@@ -45,8 +45,8 @@ const ContactList = () => {
 											name="editUser"
 											type="button"
 											onClick={() => {
-												// console.log(index);
-												// actions.getCurrentUser(index);
+												console.log(index);
+												actions.getCurrentUser(index);
 											}}>
 											<i className="fas fa-user-edit" />
 										</button>
@@ -56,7 +56,7 @@ const ContactList = () => {
 										name="deleteButton"
 										type="button"
 										onClick={() => {
-											actions.deleteItem(index);
+											actions.deleteItem(id);
 										}}>
 										<i className="far fa-trash-alt" />
 									</button>

@@ -5,28 +5,31 @@ import { EditContact, EditText } from "react-edit-text";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const EditContacts = index => {
+const EditContacts = props => {
 	const { store, actions } = useContext(Context);
+	const edit = store.list[props.index.match.params.index];
 
-	const [newFullName, setNewFullName] = useState();
-	const [newEmail, setNewEmail] = useState();
-	const [newAddress, setNewAddress] = useState();
-	const [newPhone, setNewPhone] = useState();
+	const [newFullName, setNewFullName] = useState(edit.full_name);
+	const [newEmail, setNewEmail] = useState(edit.email);
+	const [newAddress, setNewAddress] = useState(edit.address);
+	const [newPhone, setNewPhone] = useState(edit.phone);
+	const id = edit.id;
 
+	console.log(edit);
 	return (
 		<div className="text-center mt-5">
 			<div>
 				<ul>
-					<li key={index}>
+					<li>
 						<div>
 							<div>
 								<label>Full Name: </label>
-								<input placeholder={index} onChange={e => setNewFullName(e.target.value)} />
+								<input value={newFullName} onChange={e => setNewFullName(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Email: </label>
-								<input value={"value"} onChange={e => setNewEmail(e.target.value)} />
+								<input value={newEmail} onChange={e => setNewEmail(e.target.value)} />
 							</div>
 
 							<div>
@@ -49,7 +52,7 @@ const EditContacts = index => {
 							name="saveButton"
 							type="button"
 							onClick={() => {
-								actions.UpdateCurrentUser(index, newFullName, newEmail, newAddress, newPhone);
+								actions.UpdateCurrentUser(id, newFullName, newEmail, newAddress, newPhone);
 
 								setNewFullName("");
 								setNewEmail("");
@@ -66,7 +69,8 @@ const EditContacts = index => {
 };
 
 EditContacts.propTypes = {
-	match: PropTypes.object
+	match: PropTypes.object,
+	index: PropTypes.object
 };
 
 export default EditContacts;

@@ -7,6 +7,5 @@ import ImportContact from "../component/ImportContact";
 export const Home = () => (
 	<div className="text-center mt-5">
 		<ImportContact />
-		<ContactList />
 	</div>
 );

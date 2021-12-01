@@ -47,7 +47,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// delete conatct
-			deleteItem: index => {
+			deleteItem: id => {
 				const myHeaders = { "Content-Type": "application/json" };
 				let newList = getStore().list;
 				const raw = JSON.stringify(newList);
@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				const newObject = { list: newList };
-				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
+				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
 					.then(() => getActions().listGet())
@@ -86,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 			// put updated data to sever
-			UpdateCurrentUser: (index, newFullName, email, address, phone) => {
+			UpdateCurrentUser: (id, newFullName, email, address, phone) => {
 				const myHeaders = { "Content-Type": "application/json" };
 				const raw = JSON.stringify({
 					full_name: newFullName,
@@ -103,7 +103,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
+				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, requestOptions)
 					.then(response => response.text())
 					// .then(result => console.log(result))
 					.then(() => getActions().listGet())
