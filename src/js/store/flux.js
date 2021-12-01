@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			list: []
+			list: [],
+			singleUser: {}
 		},
 		actions: {
 			// Get Conatct List
@@ -80,8 +81,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
-					.then(res => getStore(res))
+					.then(result => getStore(setStore({ singleUser: result })))
+
 					.catch(error => console.log("error", error));
 			},
 			// put updated data to sever
@@ -104,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					// .then(result => console.log(result))
 					.then(() => getActions().listGet())
 					.catch(error => console.log("error", error));
 			}

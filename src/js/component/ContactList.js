@@ -13,8 +13,8 @@ const ContactList = () => {
 			<div>
 				<ul>
 					{store.list &&
-						store.list.map(item => {
-							const index = item.id;
+						store.list.map((item, index) => {
+							// const index = item.id;
 
 							return (
 								<li key={index}>
@@ -40,12 +40,13 @@ const ContactList = () => {
 											{item.phone}
 										</div>
 									</div>
-									<Link to="/single">
+									<Link to={"/single/" + index}>
 										<button
 											name="editUser"
 											type="button"
 											onClick={() => {
-												actions.getCurrentUser(index);
+												// console.log(index);
+												// actions.getCurrentUser(index);
 											}}>
 											<i className="fas fa-user-edit" />
 										</button>
