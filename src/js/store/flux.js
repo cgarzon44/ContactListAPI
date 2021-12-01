@@ -67,18 +67,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 
+			// get user to edit
 			getCurrentUser: index => {
-				let requestOptions = {
+				const myHeaders = { "Content-Type": "application/json" };
+
+				const raw = JSON.stringify();
+
+				const requestOptions = {
 					method: "GET",
 					redirect: "follow"
 				};
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
-					.then(response => response.json())
-					// .then(result => console.log(result))
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.then(res => getStore(res))
 					.catch(error => console.log("error", error));
 			},
-
+			// put updated data to sever
 			UpdateCurrentUser: (index, fullname, email, address, phone) => {
 				const myHeaders = { "Content-Type": "application/json" };
 				const raw = JSON.stringify({
@@ -99,6 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
+
 					.catch(error => console.log("error", error));
 			}
 		}

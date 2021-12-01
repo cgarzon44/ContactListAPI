@@ -4,7 +4,7 @@ import { Context } from "../store/appContext";
 import { EditText } from "react-edit-text";
 import { Link } from "react-router-dom";
 
-const ContactList = () => {
+const EditContact = () => {
 	const { store, actions } = useContext(Context);
 	const [newFullName, setNewFullName] = useState();
 
@@ -18,10 +18,11 @@ const ContactList = () => {
 
 							return (
 								<li key={index}>
+									<h1>HEllO</h1>
 									<div>
 										<div>
 											<label>Full Name: </label>
-
+											<EditText defaultValue={item.full_name} />
 											{item.full_name}
 										</div>
 
@@ -40,24 +41,14 @@ const ContactList = () => {
 											{item.phone}
 										</div>
 									</div>
-									<Link to="/single">
-										<button
-											name="editUser"
-											type="button"
-											onClick={() => {
-												actions.getCurrentUser(index);
-											}}>
-											<i className="fas fa-user-edit" />
-										</button>
-									</Link>
 
 									<button
-										name="deleteButton"
+										name="saveButton"
 										type="button"
 										onClick={() => {
-											actions.deleteItem(index);
+											actions.UpdateCurrentUser(index, fullname, email, address, phone);
 										}}>
-										<i className="far fa-trash-alt" />
+										<i className="fas fa-save" />
 									</button>
 								</li>
 							);
@@ -68,4 +59,4 @@ const ContactList = () => {
 	);
 };
 
-export default ContactList;
+export default EditContact;
