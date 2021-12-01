@@ -39,7 +39,13 @@ const ContactList = () => {
 												{item.phone}
 											</div>
 										</div>
-
+										<button
+											type="button"
+											onClick={() => {
+												actions.getCurrentUser(index);
+											}}>
+											<i className="fas fa-user-edit" />
+										</button>
 										<button
 											type="button"
 											onClick={() => {

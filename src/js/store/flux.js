@@ -67,24 +67,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 
-			updateContact: index => {
-				const myHeaders = { "Content-Type": "application/json" };
-				let newList = getStore().list;
-
-				const raw = JSON.stringify(newList);
-
-				const requestOptions = {
-					method: "PUT",
-					headers: myHeaders,
-					body: raw,
+			getCurrentUser: index => {
+				var requestOptions = {
+					method: "GET",
 					redirect: "follow"
 				};
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
-					.then(() => getActions().listGet())
-
+					.then(result => getStore(setStore({ list: result })))
 					.catch(error => console.log("error", error));
 			}
 		}
