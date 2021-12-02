@@ -14,8 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(` https://assets.breatheco.de/apis/fake/contact/agenda/CarlosAgenda`, requestOptions)
 					.then(response => response.json())
-					.then(res => getStore(setStore({ list: res })))
-					.catch(error => console.log("error", error));
+					.then(res => getStore(setStore({ list: res })));
 			},
 
 			// add new contact
@@ -41,9 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/`, requestOptions)
 					.then(response => response.json())
-					.then(result => console.log(result))
-					.then(() => getActions().listGet())
-					.catch(error => console.log("error", error));
+					.then(() => getActions().listGet());
 			},
 
 			// delete conatct
@@ -62,10 +59,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const newObject = { list: newList };
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, requestOptions)
 					.then(response => response.json())
-					.then(result => console.log(result))
-					.then(() => getActions().listGet())
-
-					.catch(error => console.log("error", error));
+					.then(() => getActions().listGet());
 			},
 
 			// get user to edit
@@ -81,9 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${index}`, requestOptions)
 					.then(response => response.text())
-					.then(result => getStore(setStore({ singleUser: result })))
-
-					.catch(error => console.log("error", error));
+					.then(result => getStore(setStore({ singleUser: result })));
 			},
 			// put updated data to sever
 			UpdateCurrentUser: (id, newFullName, email, address, phone) => {
@@ -105,9 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch(`https://assets.breatheco.de/apis/fake/contact/${id}`, requestOptions)
 					.then(response => response.text())
-					// .then(result => console.log(result))
-					.then(() => getActions().listGet())
-					.catch(error => console.log("error", error));
+					.then(() => getActions().listGet());
 			}
 		}
 	};

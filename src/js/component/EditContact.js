@@ -15,7 +15,6 @@ const EditContacts = props => {
 	const [newPhone, setNewPhone] = useState(edit.phone);
 	const id = edit.id;
 
-	console.log(edit);
 	return (
 		<div className="text-center mt-5">
 			<div>
@@ -24,22 +23,22 @@ const EditContacts = props => {
 						<div>
 							<div>
 								<label>Full Name: </label>
-								<input placeholder={newFullName} onChange={e => setNewFullName(e.target.value)} />
+								<input value={newFullName} onChange={e => setNewFullName(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Email: </label>
-								<input placeholder={newEmail} onChange={e => setNewEmail(e.target.value)} />
+								<input value={newEmail} onChange={e => setNewEmail(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Address: </label>
-								<input placeholder={newAddress} onChange={e => setNewAddress(e.target.value)} />
+								<input value={newAddress} onChange={e => setNewAddress(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Phone: </label>
-								<input placeholder={newPhone} onChange={e => setNewPhone(e.target.value)} />
+								<input value={newPhone} onChange={e => setNewPhone(e.target.value)} />
 							</div>
 						</div>
 						<Link to="/">

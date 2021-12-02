@@ -9,63 +9,69 @@ const ContactList = index => {
 	const [newFullName, setNewFullName] = useState();
 
 	return (
-		<div className="text-center mt-5">
-			<div>
-				<ul>
-					{store.list &&
-						store.list.map((item, index) => {
-							const id = item.id;
+		<>
+			<div className="ml-auto">
+				<Link to="/demo">
+					<button className="btn btn-primary">Add Contact</button>
+				</Link>
+			</div>
+			<div className="text-center mt-5">
+				<div>
+					<ul>
+						{store.list &&
+							store.list.map((item, index) => {
+								const id = item.id;
 
-							return (
-								<li key={index}>
-									<div>
+								return (
+									<li key={index}>
 										<div>
-											<label>Full Name: </label>
+											<div>
+												<label>Full Name: </label>
 
-											{item.full_name}
-										</div>
+												{item.full_name}
+											</div>
 
-										<div>
-											<label>Email: </label>
-											{item.email}
-										</div>
+											<div>
+												<label>Email: </label>
+												{item.email}
+											</div>
 
-										<div>
-											<label>Address: </label>
-											{item.address}
-										</div>
+											<div>
+												<label>Address: </label>
+												{item.address}
+											</div>
 
-										<div>
-											<label>Phone: </label>
-											{item.phone}
+											<div>
+												<label>Phone: </label>
+												{item.phone}
+											</div>
 										</div>
-									</div>
-									<Link to={"/single/" + index}>
+										<Link to={"/single/" + index}>
+											<button
+												name="editUser"
+												type="button"
+												onClick={() => {
+													actions.getCurrentUser(index);
+												}}>
+												<i className="fas fa-user-edit" />
+											</button>
+										</Link>
+
 										<button
-											name="editUser"
+											name="deleteButton"
 											type="button"
 											onClick={() => {
-												console.log(index);
-												actions.getCurrentUser(index);
+												actions.deleteItem(id);
 											}}>
-											<i className="fas fa-user-edit" />
+											<i className="far fa-trash-alt" />
 										</button>
-									</Link>
-
-									<button
-										name="deleteButton"
-										type="button"
-										onClick={() => {
-											actions.deleteItem(id);
-										}}>
-										<i className="far fa-trash-alt" />
-									</button>
-								</li>
-							);
-						})}
-				</ul>
+									</li>
+								);
+							})}
+					</ul>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
