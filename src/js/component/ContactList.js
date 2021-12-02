@@ -9,12 +9,12 @@ const ContactList = index => {
 
 	return (
 		<>
-			<div className="ml-auto">
+			<div className="addContactButton">
 				<Link to="/demo">
 					<button className="btn btn-success">Add Contact</button>
 				</Link>
 			</div>
-			<div className="text-center mt-5">
+			<div className="mt-5">
 				<div>
 					<ul>
 						{store.list &&
@@ -25,6 +25,10 @@ const ContactList = index => {
 									<>
 										<li className="ContactDiv" key={index}>
 											<div>
+												<img
+													src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+													alt="No Picture"
+												/>
 												<div>
 													<h1>{item.full_name}</h1>
 												</div>
