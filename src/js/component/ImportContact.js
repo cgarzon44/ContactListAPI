@@ -1,6 +1,7 @@
 import React, { useContext, useState, nextID } from "react";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 const ImportContact = () => {
 	const { actions } = useContext(Context);
@@ -51,19 +52,21 @@ const ImportContact = () => {
 						onChange={e => setPhone(e.target.value)}
 					/>
 				</div>
-				<button
-					className="btn-primary "
-					type="button"
-					onClick={() => {
-						actions.newListItem(fullName, email, address, phone);
-						handleOnClickButton;
-						setFullName("");
-						setEmail("");
-						setAdress("");
-						setPhone("");
-					}}>
-					Add New Contact
-				</button>
+				<Link to="/">
+					<button
+						className="btn-success "
+						type="button"
+						onClick={() => {
+							actions.newListItem(fullName, email, address, phone);
+							handleOnClickButton;
+							setFullName("");
+							setEmail("");
+							setAdress("");
+							setPhone("");
+						}}>
+						Add New Contact
+					</button>
+				</Link>
 			</form>
 		</>
 	);
