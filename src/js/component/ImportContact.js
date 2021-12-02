@@ -19,54 +19,72 @@ const ImportContact = () => {
 		<>
 			<form>
 				<div className="text-center mt-5">
-					<label>Full Name: </label>
-					<input
-						name="full_name"
-						type="text"
-						placeholder="Enter First Name"
-						value={fullName}
-						onChange={e => setFullName(e.target.value)}
-					/>
-					<label>Email: </label>
-					<input
-						name="email"
-						type="text"
-						placeholder="dave@gmail.com"
-						value={email}
-						onChange={e => setEmail(e.target.value)}
-					/>
-					<label>Address: </label>
-					<input
-						name="address"
-						type="text"
-						placeholder="47568 NW 34ST, 33434 FL, USA"
-						value={address}
-						onChange={e => setAdress(e.target.value)}
-					/>
-					<label>Phone: </label>
-					<input
-						name="phone"
-						type="text"
-						placeholder="(555)555-1234"
-						value={phone}
-						onChange={e => setPhone(e.target.value)}
-					/>
+					<div>
+						<ul>
+							<li>
+								<div>
+									<div>
+										<label>Full Name: </label>
+
+										<input
+											name="full_name"
+											type="text"
+											placeholder="Enter Full Name"
+											value={fullName}
+											onChange={e => setFullName(e.target.value)}
+										/>
+										<div>
+											<label>Email: </label>
+											<input
+												name="email"
+												type="text"
+												placeholder="Email@gmail.com"
+												value={email}
+												onChange={e => setEmail(e.target.value)}
+											/>
+										</div>
+										<div>
+											<label>Address: </label>
+											<input
+												name="address"
+												type="text"
+												placeholder="47568 NW 34ST, 33434 FL, USA"
+												value={address}
+												onChange={e => setAdress(e.target.value)}
+											/>
+										</div>
+										<div>
+											<label>Phone: </label>
+											<input
+												name="phone"
+												type="text"
+												placeholder="(555)555-1234"
+												value={phone}
+												onChange={e => setPhone(e.target.value)}
+											/>
+										</div>
+
+										<Link to="/">
+											<button
+												className="btn-success "
+												type="button"
+												onClick={() => {
+													actions.newListItem(fullName, email, address, phone);
+													handleOnClickButton;
+													setFullName("");
+													setEmail("");
+													setAdress("");
+													setPhone("");
+												}}>
+												Add New Contact
+											</button>
+										</Link>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<Link to="/">
-					<button
-						className="btn-success "
-						type="button"
-						onClick={() => {
-							actions.newListItem(fullName, email, address, phone);
-							handleOnClickButton;
-							setFullName("");
-							setEmail("");
-							setAdress("");
-							setPhone("");
-						}}>
-						Add New Contact
-					</button>
-				</Link>
 			</form>
 		</>
 	);
