@@ -24,43 +24,38 @@ const EditContacts = props => {
 						<div>
 							<div>
 								<label>Full Name: </label>
-								<input value={newFullName} onChange={e => setNewFullName(e.target.value)} />
+								<input placeholder={newFullName} onChange={e => setNewFullName(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Email: </label>
-								<input value={newEmail} onChange={e => setNewEmail(e.target.value)} />
+								<input placeholder={newEmail} onChange={e => setNewEmail(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Address: </label>
-								<input value={newAddress} onChange={e => setNewAddress(e.target.value)} />
+								<input placeholder={newAddress} onChange={e => setNewAddress(e.target.value)} />
 							</div>
 
 							<div>
 								<label>Phone: </label>
-								<input value={newPhone} onChange={e => setNewPhone(e.target.value)} />
+								<input placeholder={newPhone} onChange={e => setNewPhone(e.target.value)} />
 							</div>
 						</div>
-						<Link to="/demo">
+						<Link to="/">
 							<button name="leaveEdit" type="button">
 								<i className="fas fa-undo-alt" />
 							</button>
+
+							<button
+								name="saveButton"
+								type="button"
+								onClick={() => {
+									actions.UpdateCurrentUser(id, newFullName, newEmail, newAddress, newPhone);
+								}}>
+								<i className="fas fa-save" />
+							</button>
 						</Link>
-
-						<button
-							name="saveButton"
-							type="button"
-							onClick={() => {
-								actions.UpdateCurrentUser(id, newFullName, newEmail, newAddress, newPhone);
-
-								setNewFullName("");
-								setNewEmail("");
-								setNewAddress("");
-								setNewPhone("");
-							}}>
-							<i className="fas fa-save" />
-						</button>
 					</li>
 				</ul>
 			</div>
