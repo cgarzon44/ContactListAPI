@@ -26,3 +26,20 @@ ul {
       width: 75px;
       
   }
+
+  .hide{
+    visibility:hidden;
+}
+
+.contactListButtons{
+ display: flex;
+  justify-content:space-between;
+}
+
+.fa-ban{
+  color: red;
+}
+
+.fa-edit{
+  color:gray;
+}
