@@ -12,13 +12,13 @@ const ContactList = index => {
 	return (
 		<>
 			<div className="addContactButtondiv">
-				<Link to="/demo">
-					<button className="btn btn-success addContactButton">Add New Contact</button>
-				</Link>{" "}
 				<img
 					id="headerImg"
 					src="https://bhexpress.co.uk/wp-content/uploads/2018/10/Contact-us-banner-green-min-1.jpg"
 				/>
+				<Link to="/demo">
+					<button className="btn btn-success addContactButton">Add New Contact</button>
+				</Link>
 			</div>
 			<div className="mt-5">
 				<div>
