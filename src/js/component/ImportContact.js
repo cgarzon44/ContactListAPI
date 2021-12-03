@@ -3,38 +3,46 @@ import "../../styles/home.scss";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-const ImportContact = () => {
+const ImportContact = index => {
 	const { actions } = useContext(Context);
-
+	const [isShownHoverContent, setIsShownHoverContent] = useState(null);
 	const [fullName, setFullName] = useState("");
 	const [email, setEmail] = useState("");
 	const [address, setAdress] = useState("");
 	const [phone, setPhone] = useState("");
 
-	const handleOnClickButton = e => {
-		e.preventDefault();
-	};
-
 	return (
 		<>
-			<form>
-				<div className="text-center mt-5">
+			<form key={index}>
+				<Link to="/">
+					<div name="leaveAddContact" type="button">
+						<i className="fas fa-arrow-left backButton"> BACK</i>
+					</div>
+				</Link>
+				<div
+					className={isShownHoverContent === index ? "ContactDiv glow" : "ContactDiv "}
+					onMouseEnter={() => setIsShownHoverContent(index)}
+					onMouseLeave={() => setIsShownHoverContent(-1)}>
 					<div>
 						<ul>
 							<li>
 								<div>
 									<div>
-										<label>Full Name: </label>
+										<div className="inputDiv">
+											<label>Full Name: </label>
 
-										<input
-											name="full_name"
-											type="text"
-											placeholder="Enter Full Name"
-											value={fullName}
-											onChange={e => setFullName(e.target.value)}
-										/>
-										<div>
+											<input
+												name="full_name"
+												type="text"
+												placeholder="Enter Full Name"
+												value={fullName}
+												onChange={e => setFullName(e.target.value)}
+											/>
+										</div>
+										<br />
+										<div className="inputDiv">
 											<label>Email: </label>
+
 											<input
 												name="email"
 												type="text"
@@ -43,8 +51,10 @@ const ImportContact = () => {
 												onChange={e => setEmail(e.target.value)}
 											/>
 										</div>
-										<div>
+										<br />
+										<div className="inputDiv">
 											<label>Address: </label>
+
 											<input
 												name="address"
 												type="text"
@@ -53,8 +63,10 @@ const ImportContact = () => {
 												onChange={e => setAdress(e.target.value)}
 											/>
 										</div>
-										<div>
+										<br />
+										<div className="inputDiv">
 											<label>Phone: </label>
+
 											<input
 												name="phone"
 												type="text"
@@ -63,13 +75,12 @@ const ImportContact = () => {
 												onChange={e => setPhone(e.target.value)}
 											/>
 										</div>
-
+										<br />
+									</div>
+									<div className="addButtondiv">
 										<Link to="/">
-											<button name="leaveAddContact" type="button">
-												<i className="fas fa-undo-alt" />
-											</button>
 											<button
-												className="btn-success "
+												className="btn-success addContactFormButton"
 												type="button"
 												onClick={() => {
 													actions.newListItem(fullName, email, address, phone);
