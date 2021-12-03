@@ -80,7 +80,7 @@ const ImportContact = index => {
 									<div className="addButtondiv">
 										<Link to="/">
 											<button
-												className="btn-success addContactFormButton"
+												className="btn-success "
 												type="button"
 												onClick={() => {
 													actions.newListItem(fullName, email, address, phone);
