@@ -11,10 +11,14 @@ const ContactList = index => {
 
 	return (
 		<>
-			<div className="addContactButton">
+			<div className="addContactButtondiv">
 				<Link to="/demo">
-					<button className="btn btn-success">Add Contact</button>
-				</Link>
+					<button className="btn btn-success addContactButton">Add New Contact</button>
+				</Link>{" "}
+				<img
+					id="headerImg"
+					src="https://bhexpress.co.uk/wp-content/uploads/2018/10/Contact-us-banner-green-min-1.jpg"
+				/>
 			</div>
 			<div className="mt-5">
 				<div>
@@ -26,7 +30,9 @@ const ContactList = index => {
 								return (
 									<>
 										<div
-											className="ContactDiv"
+											className={
+												isShownHoverContent === index ? "ContactDiv glow" : "ContactDiv "
+											}
 											onMouseEnter={() => setIsShownHoverContent(index)}
 											onMouseLeave={() => setIsShownHoverContent(-1)}>
 											<div className="contactListButtons">
@@ -64,6 +70,7 @@ const ContactList = index => {
 											<li key={index}>
 												<div>
 													<img
+														className="contactImg"
 														src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
 														alt="No Picture"
 													/>

@@ -65,16 +65,14 @@ const ImportContact = () => {
 										</div>
 
 										<Link to="/">
+											<button name="leaveAddContact" type="button">
+												<i className="fas fa-undo-alt" />
+											</button>
 											<button
 												className="btn-success "
 												type="button"
 												onClick={() => {
 													actions.newListItem(fullName, email, address, phone);
-													handleOnClickButton;
-													setFullName("");
-													setEmail("");
-													setAdress("");
-													setPhone("");
 												}}>
 												Add New Contact
 											</button>
