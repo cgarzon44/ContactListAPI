@@ -3,7 +3,7 @@ import "../../styles/home.scss";
 import ContactList from "../component/ContactList";
 
 export const Home = () => (
-	<div className="text-center mt-5 ">
+	<div className="text-center ">
 		<ContactList />
 	</div>
 );
