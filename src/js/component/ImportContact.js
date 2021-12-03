@@ -77,24 +77,24 @@ const ImportContact = index => {
 										</div>
 										<br />
 									</div>
-									<div className="addButtondiv">
-										<Link to="/">
-											<button
-												className="btn-success "
-												type="button"
-												onClick={() => {
-													actions.newListItem(fullName, email, address, phone);
-												}}>
-												Add New Contact
-											</button>
-										</Link>
-									</div>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
-			</form>
+			</form>{" "}
+			<div className="addButtondiv">
+				<Link to="/">
+					<button
+						className="btn-success "
+						type="button"
+						onClick={() => {
+							actions.newListItem(fullName, email, address, phone);
+						}}>
+						Add New Contact
+					</button>
+				</Link>
+			</div>
 		</>
 	);
 };

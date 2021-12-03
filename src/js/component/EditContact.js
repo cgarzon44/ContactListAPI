@@ -53,31 +53,25 @@ const EditContacts = (props, i) => {
 										</div>
 										<br />
 									</div>
-									<div className="addButtondiv">
-										<Link to="/">
-											<button
-												className="btn-success addContactFormButton"
-												name="saveButton"
-												type="button"
-												onClick={() => {
-													actions.UpdateCurrentUser(
-														id,
-														newFullName,
-														newEmail,
-														newAddress,
-														newPhone
-													);
-												}}>
-												Save
-											</button>
-										</Link>
-									</div>
 								</div>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</form>
+			<div className="addButtondiv">
+				<Link to="/">
+					<button
+						className="btn-success addContactFormButton"
+						name="saveButton"
+						type="button"
+						onClick={() => {
+							actions.UpdateCurrentUser(id, newFullName, newEmail, newAddress, newPhone);
+						}}>
+						Save
+					</button>
+				</Link>
+			</div>
 		</>
 	);
 };

@@ -4,6 +4,10 @@
 
 
 // global styles
+
+form{
+  padding: 3%;
+}
 .glow{
     box-shadow:0px 0px 2px 2px lightgreen
    
@@ -94,7 +98,7 @@ ul {
   margin:auto;
   display: flex;
   justify-content: space-evenly;
-  padding:1%;
+  padding:3%;
 }
 
 .addContactFormButton{
